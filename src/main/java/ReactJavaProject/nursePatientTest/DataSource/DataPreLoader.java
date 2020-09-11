@@ -28,14 +28,14 @@ public class DataPreLoader implements CommandLineRunner {
     }
     @Override
     public void run(String... args) throws Exception {
-        this.nurseRepository.save(new Nurse("Ann","FirstNurse","ABC","123"));
-        this.patientRepository.save(new Patient("Run","FirstPatient","ABC",1l,"A-01"));
-        this.patientRepository.save(new Patient("2Patient","SecondPatient","BCD",1l,"A-01"));
-        this.testItemRepository.save(new TestItem("BPL","BPL description"));
-        this.testItemRepository.save(new TestItem("BHL","BHL description"));
+        this.nurseRepository.save(new Nurse("Ann","White","Cardiology","123"));
+        this.patientRepository.save(new Patient("Bob","Black","Cardiology",1l,"A-01"));
+        this.patientRepository.save(new Patient("Ray","Smith","BCD",1l,"A-01"));
+        this.testItemRepository.save(new TestItem("BPL","Blood Pressure Level"));
+        this.testItemRepository.save(new TestItem("Weight","Test Daily weight"));
         this.testItemRepository.save(new TestItem("Temperature","Temperature description"));
-        this.testRepository.save(new Test(2l,1l,4l,"bpl bpl bpl",new Date("2020/08/29")));
-        this.testRepository.save(new Test(2l,1l,5l,"bHL bHL bHL",new Date("2020/08/30")));
+        this.testRepository.save(new Test(2l,1l,4l,"120/80",new Date("2020/08/29")));
+        this.testRepository.save(new Test(2l,1l,5l,"70kg",new Date("2020/08/30")));
         this.testRepository.save(new Test(2l,1l,6l,"temperature",new Date("2020/08/31")));
     }
 }
