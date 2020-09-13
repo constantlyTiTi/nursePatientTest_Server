@@ -36,6 +36,6 @@ public class DataPreLoader implements CommandLineRunner {
         this.testItemRepository.save(new TestItem("Temperature","Temperature description"));
         this.testRepository.save(new Test(2l,1l,4l,"120/80",new Date("2020/08/29")));
         this.testRepository.save(new Test(2l,1l,5l,"70kg",new Date("2020/08/30")));
-        this.testRepository.save(new Test(2l,1l,6l,"temperature",new Date("2020/08/31")));
+        this.testRepository.save(new Test(2l,1l,6l,"37",new Date("2020/08/31")));
     }
 }

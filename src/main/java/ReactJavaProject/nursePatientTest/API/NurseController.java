@@ -4,8 +4,11 @@ import ReactJavaProject.nursePatientTest.Repositories.NurseRepository;
 import ReactJavaProject.nursePatientTest.Models.Nurse;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 @RestController
 public class NurseController {
@@ -30,6 +33,25 @@ public class NurseController {
     @GetMapping("/nurse/{id}")
     public Optional<Nurse> getNurseById(@PathVariable Long id){
         return nurseRepository.findById(id);
+    }
+    @PostMapping("/login")
+    @ResponseBody
+    public Map<String,String> login(@RequestBody Nurse loginNurse){
+        AtomicReference<String> result= new AtomicReference<>("");
+        AtomicReference<Boolean> isNurseExist=new AtomicReference<>(false);
+        HashMap<String, String> map = new HashMap<>();
+        nurseRepository.findById(loginNurse.getNurseId())
+                .ifPresent(nurse -> {
+                    if(nurse.getPassword().equals(loginNurse.getPassword())){
+                        isNurseExist.set(true);
+                        result.set("match");
+                    }
+                    else {
+                        result.set("incorrect ID or password");
+                    }
+                });
+        map.put("message",result.get());
+        return map;
     }
 
     @PutMapping("/nurse/{id}")
