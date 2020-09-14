@@ -1,0 +1,9 @@
+server:
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 32mbirthday
+    key-store-type: pkcs12
+    key-alias: npt
+    key-password: 32mbirthday
+    enabled: true
+  port: 8443
